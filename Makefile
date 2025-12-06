@@ -1,19 +1,19 @@
-CFLAGS += -Wall -Wextra -Wfatal-errors -g3
-CFLAGS += -Werror=vla -Werror=shadow -Wno-unused -Wno-unused-parameter
-CFLAGS += -fsanitize=address -fsanitize=undefined
+CC = cc
+CFLAGS = -Wall -Wextra -Wfatal-errors -g3 -Werror=vla -Werror=shadow -Wno-unused -Wno-unused-parameter
 
 all: parta partb partc
 
 parta: parta.c
-	$(CC) $(CFLAGS) -o parta parta.c
+	mkdir -p build
+	$(CC) $(CFLAGS) -o build/parta parta.c
 
 partb: partb.c
-	$(CC) $(CFLAGS) -o partb partb.c
+	mkdir -p build
+	$(CC) $(CFLAGS) -o build/partb partb.c
 
 partc: partc.c
-	$(CC) $(CFLAGS) -o partc partc.c
+	mkdir -p build
+	$(CC) $(CFLAGS) -o build/partc partc.c
 
-.PHONY: clean
 clean:
-	rm -rf parta partb partc
-
+	rm -rf build
